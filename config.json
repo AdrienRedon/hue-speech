@@ -3,7 +3,7 @@
     "lights": [
         {
             "name": "Entrance",
-            "keyWords": [
+            "keywords": [
                 "entrée",
                 "couloir",
                 "porte"
@@ -11,13 +11,13 @@
         },
         {
             "name": "Kitchen",
-            "keyWords": [
+            "keywords": [
                 "cuisine"
             ]
         },
         {
             "name": "Living Room",
-            "keyWords": [
+            "keywords": [
                 "salon",
                 "chambre"
             ]
