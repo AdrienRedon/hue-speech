@@ -39,11 +39,11 @@
                 // Start recognising
                 this.recognizer.onresult = (event) => {
                     this.transcription = '';
-                    for (var i = event.resultIndex; i < event.results.length; i++) {
-                        if (event.results[i].isFinal) {
-                            this.transcription = event.results[i][0].transcript + ' (Confidence: ' + event.results[i][0].confidence + ')';
+                    for (let result of event.results) {
+                        if (result.isFinal) {
+                            this.transcription = result[0].transcript + ' (Confidence: ' + result[0].confidence + ')';
                         } else {
-                            this.transcription += event.results[i][0].transcript;
+                            this.transcription += result[0].transcript;
                         }
                     }
                 };
