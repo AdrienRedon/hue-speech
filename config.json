@@ -1,3 +1,26 @@
 {
-  "url": "{url_of_bridge}/api/{user}"
+    "url": "{url_of_bridge}/api/{user}",
+    "lights": [
+        {
+            "name": "Entrance",
+            "keyWords": [
+                "entrée",
+                "couloir",
+                "porte"
+            ]
+        },
+        {
+            "name": "Kitchen",
+            "keyWords": [
+                "cuisine"
+            ]
+        },
+        {
+            "name": "Living Room",
+            "keyWords": [
+                "salon",
+                "chambre"
+            ]
+        }
+    ]
 }
