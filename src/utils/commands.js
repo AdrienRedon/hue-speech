@@ -29,12 +29,8 @@ const _turnOff = (lights) => {
 };
 
 const getActions = (text) => {
-    const isTurnOn = _actions.turnOn.reduce((total, action) => {
-        return total + text.includes(action);
-    }, 0);
-    const isTurnOff = _actions.turnOff.reduce((total, action) => {
-        return total + text.includes(action);
-    }, 0);
+    const isTurnOn = _actions.turnOn.reduce((total, action) => total + text.includes(action), 0);
+    const isTurnOff = _actions.turnOff.reduce((total, action) => total + text.includes(action), 0);
     return {
         isTurnOn, 
         isTurnOff,
