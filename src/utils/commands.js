@@ -45,9 +45,9 @@ const getLights = (text) => {
 
 const send = (actions, lights) => {
     if (actions.isTurnOn) {
-        turnOn(lights);
+        _turnOn(lights);
     } else if (actions.isTurnOff) {
-        turnOff(lights);
+        _turnOff(lights);
     }
 };
 
