@@ -39,7 +39,7 @@ const getActions = (text) => {
 
 const getLights = (text) => {
     return config.lights.map(light => {
-        light.keywords.reduce((total, keyword) => total + text.includes(keyword), 0);
+        return light.keywords.reduce((total, keyword) => total + text.includes(keyword), 0);
     });
 };
 
