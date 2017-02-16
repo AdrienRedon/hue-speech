@@ -23,7 +23,6 @@ const getLights = (text) => {
 
 const send = (actions, lights) => {
     actions.forEach((action, indexAction) => {
-        console.log(action);
         if (action.triggered) 
             lights.forEach((light, indexLight) => {
                 if (light) 
