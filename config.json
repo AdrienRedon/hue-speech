@@ -22,5 +22,21 @@
                 "chambre"
             ]
         }
+    ],
+    "actions": [
+        {
+            "name": "Turn on",
+            "data": {"on":true, "bri": 254, "sat": 0,"hue":0},
+            "keywords": [
+                "allume"
+            ]
+        },
+        {
+            "name": "Turn off",
+            "data": {"on":false, "bri": 0, "sat": 0,"hue":0},
+            "keywords": [
+                "étein"
+            ]
+        }
     ]
 }
