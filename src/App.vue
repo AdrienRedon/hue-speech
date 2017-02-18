@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>Hue Speech</h1>
+    <div class="app">
+        <h1 class="title is-1">Hue Speech</h1>
         <speech></speech>
     </div>
 </template>
@@ -19,6 +19,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .app {
+        text-align: center;
+    }
 </style>

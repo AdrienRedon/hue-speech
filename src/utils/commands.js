@@ -9,7 +9,7 @@ const getActions = (text) => {
         }, 0);
 
         return {
-            name: action.name,
+            ...action,
             triggered
         };
     });
@@ -17,22 +17,47 @@ const getActions = (text) => {
 
 const getLights = (text) => {
     return config.lights.map(light => {
-        return light.keywords.reduce((totalLight, keyword) => totalLight + text.includes(keyword), 0);
+        const triggered = light.keywords.reduce((totalLight, keyword) => totalLight + text.includes(keyword), 0);
+        
+        return {
+            ...light,
+            triggered
+        }
     });
 };
 
-const send = (actions, lights) => {
-    actions.forEach((action, indexAction) => {
-        if (action.triggered) 
-            lights.forEach((light, indexLight) => {
-                if (light) 
-                    axios.put(`${config.url}/lights/${indexLight + 1}/state`, config.actions.find(a => a.name === action.name).data);
+const getGroups = (text) => {
+    return config.groups.map(group => {
+        const triggered = group.keywords.reduce((totalGroup, keyword) => totalGroup + text.includes(keyword), 0);
+        
+        return {
+            ...group,
+            triggered
+        }
+    });
+};
+
+const send = (actions, lights, groups) => {
+    actions.forEach(action => {
+        if (action.triggered) {
+            lights.forEach(light => {
+                if (light.triggered || action.name === 'Color loop') 
+                    axios.put(`${config.url}/lights/${light.index}/state`, action.data);
             });
+            groups.forEach(group => {
+                if (group.triggered) {
+                    group.lights.forEach(light => {
+                        axios.put(`${config.url}/lights/${light}/state`, action.data);
+                    })
+                }
+            });
+        }
     });
 };
 
 export default {
     getActions,
     getLights,
+    getGroups,
     send,
 }

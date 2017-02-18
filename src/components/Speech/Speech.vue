@@ -1,8 +1,8 @@
 <template>
     <div class="speech">
         <div class="supported" v-if="isSupported">
-            <p>Transcription: {{ transcription }}</p>
-            <button @click="listen">🎤</button>
+            <button :class="{'is-primary': isListening}" class="button is-large" @click="listen">🎤</button>
+            <p>{{ transcription }}</p>
         </div>
         <div class="not-supported" v-else>
             Your browser doesn't support speech recognition 😢
@@ -74,7 +74,8 @@
             sendAction () {
                 const actions = commands.getActions(this.transcription);
                 const lights = commands.getLights(this.transcription);
-                commands.send(actions, lights);
+                const groups = commands.getGroups(this.transcription);
+                commands.send(actions, lights, groups);
             }
         }
     }
